@@ -9,6 +9,8 @@
 
 ### Create the user
 
+**Make sure to edit the password**
+
     CREATE USER 'esmanagerNginx'@'localhost' IDENTIFIED BY 'password';
     GRANT ALL PRIVILEGES ON esmanager.* TO 'esmanagerNginx'@'localhost';
 
