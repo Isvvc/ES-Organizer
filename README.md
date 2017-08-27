@@ -1,9 +1,11 @@
-# ES Organizer
+# ESG Organizer
+Elder Scrolls Game Organizer  
 PHP and MySQL management system for Elder Scrolls games
 
 Proper readme coming soon
 
- ES Organizer PHP and MySQL management system for Elder Scrolls games
+ ESG Organizer PHP and MySQL management system for Elder Scrolls games
+ 
     Copyright (C) 2017  Isvvc
 
     This program is free software: you can redistribute it and/or modify
