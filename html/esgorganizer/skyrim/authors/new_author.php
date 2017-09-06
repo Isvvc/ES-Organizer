@@ -7,6 +7,8 @@
 	include("../../includes/header.php");
 
 	if(isset($_POST['submit'])){
+		#print_r($_POST);
+
 		// Store the data POSTed from the add character form
 	    $name=$_POST['name'];
 	    $nexus=$_POST['nexus'];
@@ -22,7 +24,7 @@
 	    $categories=postSetCheckboxes('authors','categories');
 
 	    // Change the values of the associative array created to the POST values for each key
-	    foreach($categories as $key => $value) {
+	    foreach($categories as $key => $value){
 	    	$categories[$key]=$_POST[$value];
 	    }
 
@@ -41,19 +43,23 @@
 	    $query.=" '$name','$nexus','$other'";
 	    $query.=",'";
 	    foreach ($categories as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=($value=="on")?(str_replace('_', ' ', $key).","):"";
 	    	#$query.=$value.",";
 	    }
 	    $query.="','";
 	    foreach ($content as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=($value=="on")?(str_replace('_', ' ', $key).","):"";
 	    }
 	    // Remove the extra comma
 	    $query =rtrim($query,', ');
 	    $query.="'";
-	    $query.=")";
+	    $query.=")"; 
 
 	    #echo $query;
+
+	    //print_r($categories);
+
+
 
 	    // Perform the MySQL query
 	    $result=mysqli_query($db,$query);
@@ -74,7 +80,7 @@
 	<div id="page">
 		<p><a href=".">Back</a></p>
 		<h2>New Mod Author</h2>
-		<form action="" method="POST">
+		<form method="POST">
 			<p>
 				<label for="name">Name:</label>
 				<input type="text" name="name" id="name">

@@ -53,7 +53,7 @@
 
 	    $query.="categories='";
 	    foreach ($categories as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=$value=="on"?(str_replace('_', ' ', $key).","):"";
 	    }
 	    $query.="' ";
 
