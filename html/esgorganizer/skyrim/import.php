@@ -33,7 +33,7 @@
 	    $query.=" '$name','$nexus','$authorId'";
 	    $query.=",'";
 	    foreach ($categories as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=$value=="on"?(str_replace('_', ' ', $key).","):"";
 	    	#$query.=$value.",";
 	    }
 	    // Remove the extra comma
@@ -86,12 +86,12 @@
 	    $query.=" '$name','$nexus','$other'";
 	    $query.=",'";
 	    foreach ($categories as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=$value=="on"?(str_replace('_', ' ', $key).","):"";
 	    	#$query.=$value.",";
 	    }
 	    $query.="','";
 	    foreach ($content as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=$value=="on"?(str_replace('_', ' ', $key).","):"";
 	    }
 	    // Remove the extra comma
 	    $query =rtrim($query,', ');
@@ -126,7 +126,7 @@
 	<div id="page">
 		<p><a href="">Cancel</a></p>
 		<h2>Import mod</h2>
-		<form action="" method="POST">
+		<form method="POST">
 			<p>
 				<label for="name">Name:</label>
 				<input type="text" name="name" id="name" value="<?php echo htmlentities($name); ?>" disabled="disabled">
@@ -158,7 +158,7 @@
 		<p><a href=".">Cancel</a></p>
 		<p>Must add mod author first.</p>
 		<h2>Import Mod Author</h2>
-		<form action="" method="POST">
+		<form method="POST">
 			<p>
 				<label for="name">Name:</label>
 				<input type="text" name="name" id="name" value="<?php echo htmlentities($name); ?>" disabled="disabled">
