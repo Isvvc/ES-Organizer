@@ -60,13 +60,13 @@
 
 	    $query.="categories='";
 	    foreach ($categories as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=($value=="on")?(str_replace('_', ' ', $key).","):"";
 	    }
 	    $query.="', ";
 
 	    $query.="content='";
 	    foreach ($content as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=$value=="on"?(str_replace('_', ' ', $key).","):"";
 	    }
 	    $query.="' ";
 
@@ -91,7 +91,7 @@
 	<div id="page">
 		<p><a href=".">Cancel</a></p>
 		<h2>Edit Mod Author</h2>
-		<form action="" method="POST">
+		<form method="POST">
 			<p>
 				<label for="name">Name:</label>
 				<input type="text" name="name" id="name" value="<?php echo htmlentities($name); ?>">

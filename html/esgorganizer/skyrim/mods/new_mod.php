@@ -35,7 +35,7 @@
 	    $query.=" '$name','$nexus','$authorId'";
 	    $query.=",'";
 	    foreach ($categories as $key => $value) {
-	    	$query.=$value=="on"?$key.",":"";
+	    	$query.=$value=="on"?(str_replace('_', ' ', $key).","):"";
 	    	#$query.=$value.",";
 	    }
 	    // Remove the extra comma
@@ -64,7 +64,7 @@
 	<div id="page">
 		<p><a href=".">Back</a></p>
 		<h2>New Mod</h2>
-		<form action="" method="POST">
+		<form method="POST">
 			<p>
 				<label for="name">Name:</label>
 				<input type="text" name="name" id="name">

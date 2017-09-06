@@ -97,12 +97,13 @@
 		// Create a checkbox for each set value with a matching label
 		foreach($setList as $value){
 			$selectCheckboxes.='<li>';
-			$selectCheckboxes.='<input type="checkbox" name="'.$value.'" id="'.$value.'"';
+			//$selectCheckboxes.='<input type="checkbox" name="'.$value.'" id="'.$value.'"';
+			$selectCheckboxes.='<input type="checkbox" name="'.$value.'" id="'.str_replace(' ', '_', $value).'"';
 			if(in_array($value,$checked)){
 				$selectCheckboxes.=' checked';
 			}
 			$selectCheckboxes.='>';
-			$selectCheckboxes.='<label for="'.$value.'"> '.$value.'</label>';
+			$selectCheckboxes.='<label for="'.str_replace(' ', '_', $value).'"> '.$value.'</label>';
 			$selectCheckboxes.='</li>';
 		}
 
@@ -130,6 +131,10 @@
 		// Extract the induvidual set values from the query
 		$row = mysqli_fetch_array($result);
 		$setList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
+
+		foreach ($setList as $key => $value) {
+			$setList[$key]=str_replace(' ', '_', $value);
+		}
 
 		// Create a new associative array with the set values as both the key and value
 		$assoc=array_combine($setList,$setList);
